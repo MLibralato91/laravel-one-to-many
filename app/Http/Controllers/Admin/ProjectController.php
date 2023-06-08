@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Str;
@@ -18,7 +19,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(6);
+        $projects = Project::all();
+
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -48,8 +50,8 @@ class ProjectController extends Controller
             $data['image'] = asset('storage/' . $image_path);
         }
 
-        $post = Project::create($data);
-        return redirect()->route('admin.projects.show', $post->slug);
+        $project = Project::create($data);
+        return redirect()->route('admin.projects.show', $project->slug);
     }
 
     /**

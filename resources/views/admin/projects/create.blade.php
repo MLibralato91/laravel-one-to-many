@@ -5,12 +5,28 @@
 
         <h1>Create Projects</h1>
 
+        @if ($errors->any())
+            <div class="alert alert-danger mt-2">
+                @error('title')
+                    <p>*{{ $message }}</p>
+                @enderror
+
+                @error('image')
+                    <p>*{{ $message }}</p>
+                @enderror
+
+                @error('description')
+                    <p>*{{ $message }}</p>
+                @enderror
+
+
+            </div>
+        @endif
         <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" id="title" required maxlength="150"
-                    minlength="3">
+                <input type="text" class="form-control" name="title" id="title">
             </div>
             <div class="mb-3">
                 <label for="image">Image</label>

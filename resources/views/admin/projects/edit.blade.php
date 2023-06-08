@@ -4,25 +4,42 @@
 
 
         <h1>Modifica il progetto</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger mt-2">
+                @error('title')
+                    <p>*{{ $message }}</p>
+                @enderror
 
-        <form action="{{ route('admin.projects.update') }}" method="POST" enctype="multipart/form-data">
+                @error('image')
+                    <p>*{{ $message }}</p>
+                @enderror
+
+                @error('description')
+                    <p>*{{ $message }}</p>
+                @enderror
+
+
+            </div>
+        @endif
+
+        <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" id="title" required maxlength="150" minlength="3"
-                    value="{{ old('title', $projects->title) }}">
+                <input type="text" class="form-control" name="title" id="title" required maxlength="150"
+                    minlength="3" value="{{ old('title', $project->title) }}">
             </div>
             <div class="mb-3">
                 <label for="image">Image</label>
                 <input type="file" class="form-control" name="image" id="image"
-                    value="{{ old('image', $projects->image) }}">
+                    value="{{ old('image', $project->image) }}">
             </div>
             <div class="mb-3">
                 <label for="description">Body</label>
-                <textarea name="description" id="description" rows="10" class="form-control">{{ old('image', $projects->description) }}</textarea>
+                <textarea name="description" id="description" rows="10" class="form-control">{{ old('image', $project->description) }}</textarea>
             </div>
-            <button type="submit" class="btn btn-success">Crea</button>
+            <button type="submit" class="btn btn-success">Modifica</button>
             <button type="reset" class="btn btn-primary">Reset</button>
         </form>
         <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
