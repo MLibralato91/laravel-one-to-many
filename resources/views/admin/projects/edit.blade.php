@@ -28,16 +28,23 @@
             <div class="mb-3">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" name="title" id="title" required maxlength="150"
-                    minlength="3" value="{{ old('title', $project->title) }}">
+                    minlength="3" value="{{ $project['title'] }}">
             </div>
             <div class="mb-3">
                 <label for="image">Image</label>
                 <input type="file" class="form-control" name="image" id="image"
                     value="{{ old('image', $project->image) }}">
             </div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Seleziona la tecnologia</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+
+            </select>
             <div class="mb-3">
                 <label for="description">Body</label>
-                <textarea name="description" id="description" rows="10" class="form-control">{{ old('image', $project->description) }}</textarea>
+                <textarea name="description" id="description" rows="10" class="form-control">{{ $project['description'] }}</textarea>
             </div>
             <button type="submit" class="btn btn-success">Modifica</button>
             <button type="reset" class="btn btn-primary">Reset</button>

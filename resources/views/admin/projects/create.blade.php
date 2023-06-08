@@ -32,6 +32,13 @@
                 <label for="image">Image</label>
                 <input type="file" class="form-control" name="image" id="image">
             </div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Seleziona la tecnologia</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+
+            </select>
             <div class="mb-3">
                 <label for="description">Body</label>
                 <textarea name="description" id="description" rows="10" class="form-control"></textarea>
