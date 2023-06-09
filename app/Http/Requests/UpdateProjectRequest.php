@@ -26,7 +26,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => 'required|max:150|min:3',
             'image' => 'nullable',
-            'descriptions' => 'nullable',
+            'type_id' => 'nullable',
+            'description' => 'nullable',
 
 
         ];
@@ -38,7 +39,7 @@ class UpdateProjectRequest extends FormRequest
             'title.min' => "Il campo Title deve contenere almeno :min caratteri",
             'title.max' => "Il campo Title deve contenere al massimo :max caratteri",
             'image' => "Il campo Image deve essere un'immagine valida",
-            'descriptions' => "Il campo Descriptions deve essere una descrizione valida",
+            'description' => "Il campo Descriptions deve essere una descrizione valida",
 
         ];
     }

@@ -26,7 +26,8 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|unique:projects|max:150|min:3',
             'image' => 'nullable',
-            'descriptions' => 'nullable',
+            'type_id' => 'nullable',
+            'description' => 'nullable',
 
 
         ];
@@ -39,7 +40,7 @@ class StoreProjectRequest extends FormRequest
             'title.min' => "Il campo Title deve contenere almeno :min caratteri",
             'title.max' => "Il campo Title deve contenere al massimo :max caratteri",
             'image' => "Il campo Image deve essere un'immagine valida",
-            'descriptions' => "Il campo Descriptions deve essere una descrizione valida",
+            'description' => "Il campo Descriptions deve essere una descrizione valida",
 
         ];
     }

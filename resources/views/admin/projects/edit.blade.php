@@ -35,7 +35,7 @@
                 <input type="file" class="form-control" name="image" id="image"
                     value="{{ old('image', $project->image) }}">
             </div>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" name='type_id' id='type_id'>
                 <option selected>Seleziona la tecnologia</option>
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}">{{ $type->name }}</option>
